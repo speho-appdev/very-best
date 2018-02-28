@@ -1,8 +1,8 @@
 <div class="page-header">
-  <h1>
-    Dishes
-    <a href="/dishes/new" class="btn btn-lg btn-success">New Dish</a>
-  </h1>
+  <!--<h1>-->
+  <!--  Dishes-->
+  <!--  <a href="/dishes/new" class="btn btn-lg btn-success">New Dish</a>-->
+  <!--</h1>-->
 </div><div class="row mb-1">
   <div class="col-md-12">
     <%= search_form_for @q, :class => "collapse", :id => "dishes_filters" do |f| %>
@@ -53,17 +53,18 @@
       <!--    });-->
       <!--</script>-->
 
-        <div class="form-group">
-      <!--    <%# Cuisine.all.each do |cuisines| %>-->
-      <!--     <%#= f.label :cuisines, "Cuisine" %>-->
-      <!--<%#= f.check_box :cuisines, { multiple: true }, :class => "form-control", :value => "American" %>-->
-      <!--<%# end %>-->
-          
-          
-      <%= f.label :cuisine_name_cont, "Cuisine" %>
-      <%= f.check_box :cuisine_name_cont, :class => "form-control", :value => "American" %>
-    </div>
+    
 
+    <div class="form-group">
+      <% Cuisine.all.order(:name).each do |cuisine| %>
+      <div>
+        <label>
+          <%= check_box_tag('q[cuisine_id_eq_any][]', cuisine.id, (true if @q.cuisine_id_eq_any.try(:include?, cuisine.id))) %>
+          <%= cuisine.name %>
+        </label>
+      </div>
+      <% end %>
+    </div>
 <!--<div class="form-group">-->
 <!--      <%#= f.label :bookmarks_notes_cont, "Bookmark notes contains" %>-->
 <!--      <%#= f.text_field :bookmarks_notes_cont, :class => "form-control", :placeholder => "Bookmark notes contains" %>-->
