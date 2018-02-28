@@ -121,7 +121,7 @@
             <label for="venue_id">
             </label>
             
-            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :name, @dish.try(:venue_id)), :class => "form-control") %>
+            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all.order(:name), :id, :name), :class => "form-control") %>
           </div>
         </td>
         <td>
