@@ -36,9 +36,6 @@
         <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @bookmark.venue_id), :class => "form-control") %>
       </div>
 
-      
-      
-
       <!-- Label and input for notes -->
       <div class="form-group">
         <label for="notes" class="control-label">
@@ -46,6 +43,11 @@
         </label>
 
         <textarea id="notes" name="notes" placeholder="Notes" class="form-control" rows="3"><%= @bookmark.notes %></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="user-id"></label>
+        <input id="user_id" name="user_id" class="form-control" type="hidden" value="<%=current_user.id%>">
       </div>
 
       <button class="btn btn-warning">
