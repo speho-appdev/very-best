@@ -101,20 +101,8 @@
 
       <% @dishes.each do |dish| %>
       <tr>
-        <td><%= dish.name %></td>
-        
-        <!-- TRYING TO MAKE NEW TABLE DATA FOR DROP DOWN THAT INCLUDES VENUES -->
-      <!--  <div class="form-group">-->
-      <!--    <label for="director_id">-->
-      <!--      Director-->
-      <!--    </label>-->
-
-      <!--    <%#= select_tag("director_id", options_from_collection_for_select(Director.all, :id, :name, @movie.try(:director_id)), :class => "form-control") %>-->
-      <!--    <a href="/directors/new">Or add a new director</a>-->
-      <!--</div>-->
-        
-        
-        <!-- cool -->
+        <td><a href="/dishes/<%= dish.id %>"><%= dish.name %></td>
+      
         
         <td>
           <div class="form-group">
