@@ -1,13 +1,19 @@
 class BookmarksController < ApplicationController
-  before_action :current_user_must_be_bookmark_user, :only => [:edit, :update, :destroy]
+# all this is commented, but do we need to show other people's bookmarks for this dish??
+ 
+  # before_action :current_user_must_be_bookmark_user, :only => [:edit, :update, :destroy]
 
-  def current_user_must_be_bookmark_user
-    bookmark = Bookmark.find(params[:id])
-
-    unless current_user == bookmark.user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
+  # def current_user_must_be_bookmark_user
+  #   # bookmark = Bookmark.find(params[:id])
+  #   # this is pulling bookmark with id of venue not bookmark id
+  #   @dish = Dish.find(params[:id])
+  #   Bookmark.where(:dish_id => @dish.id).each do |bookmark|
+    
+  #   unless current_user.id == bookmark.user_id
+  #     redirect_back(:fallback_location => "/", :alert => "You are not authorized for that.")
+  #   end
+  #   end
+  # end
 
   def index
     @q = current_user.bookmarks.ransack(params[:q])
