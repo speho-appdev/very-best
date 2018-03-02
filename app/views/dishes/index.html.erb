@@ -58,6 +58,8 @@
               Venue
             </label>
             
+            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all.order(:name), :id, :name), :class => "form-control") %>
+          </div>
             <% a = Bookmark.where(:dish_id => dish.id).last %>
             
             <% if Bookmark.where(:dish_id => dish.id).exists? %>
