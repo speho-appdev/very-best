@@ -30,7 +30,7 @@
           </label>
   
           <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all.order(:name), :id, :name), :class => "form-control") %>
-          <!--alphabetize and add option Choose a venue...-->
+          
         </div>
   
          <!--Label and input for user_id -->
@@ -42,7 +42,6 @@
       </form>
       <small class="float-right text-muted">
         right now
-        <!--CREATED AT NEED TO CHANGE-->
       </small>
         </li>
         
@@ -57,7 +56,7 @@
             </a>
             
             <small class="float-right text-muted">
-              right now
+              <%=time_ago_in_words(bookmark.created_at) %> ago
               
               <a href="https://final-project-jenjenmckinney.c9users.io/bookmarks/<%= bookmark.id %>/edit">
                 <i class="fa fa-fw fa-edit"></i>
