@@ -43,16 +43,23 @@
       <div id="location_map" style="height: 360px;"></div>
     </div>
     <ul class="list-group list-group-flush">
-      <% @venues.each do |venue| %>
+      
+      <% Bookmark.where(:user_id => current_user.id).each do |bookmark| %>
+      
       <li class="list-group-item">
-        <a href="/venues/<%= venue.id %>"> 
-          <%= venue.name %>
+        <a href="/venues/<%= bookmark.venue_id %>"> 
+        <% Venue.where(:id => bookmark.venue_id).each do |the_name| %>
+        <%= the_name.name %>
         </a>
         
         <small class="text-muted float-right">
-          <%= venue.neighborhood.name %>
+          <% Neighborhood.where(:id => the_name.neighborhood_id).each do |place| %>
+           <%= place.name %>
+           
         </small>
       </li>
+      <% end %>
+      <% end %>
       <% end %>
     </ul>
     
