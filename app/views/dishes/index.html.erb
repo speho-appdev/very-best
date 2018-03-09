@@ -58,15 +58,17 @@
               Venue
             </label>
             
-            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all.order(:name), :id, :name), :class => "form-control") %>
+          
           </div>
             <% a = Bookmark.where(:dish_id => dish.id).last %>
             
             <% if Bookmark.where(:dish_id => dish.id).exists? %>
-              <a href="/venues/<%= a.venue_id %>"><%= a.venue_id %></a>
+      
+              <a href="/venues/<%= a.venue_id %>"><%= Venue.find(a.venue_id).name %></a>
             <% else %>
             
-            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :name, @dish.try(:venue_id)), :class => "form-control form-control-sm mr-sm-1") %>
+            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all.order(:name), :id, :name), :class => "form-control form-control-sm mr-sm-1") %>
+            <!--@dish.try(:venue_id)-->
             
             <button class="btn btn-primary btn-sm">
               <i class="fa fa-heart"></i>
