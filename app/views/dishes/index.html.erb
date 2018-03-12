@@ -62,7 +62,7 @@
           </div>
             <% a = Bookmark.where(:dish_id => dish.id).last %>
             
-            <% if Bookmark.where(:dish_id => dish.id).exists? %>
+            <% if Bookmark.where(:user_id => current_user.id).where(:dish_id => dish.id).exists? %>
       
               <a href="/venues/<%= a.venue_id %>"><%= Venue.find(a.venue_id).name %></a>
             <% else %>
