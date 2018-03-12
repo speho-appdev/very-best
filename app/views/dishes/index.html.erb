@@ -67,7 +67,7 @@
               <a href="/venues/<%= a.venue_id %>"><%= Venue.find(a.venue_id).name %></a>
             <% else %>
             
-            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all.order(:name), :id, :name), :class => "form-control form-control-sm mr-sm-1") %>
+            <%= select_tag "venue_id", options_from_collection_for_select(Venue.all.order(:name), :id, :name), prompt: "Choose a venue...", :class => "form-control form-control-sm mr-sm-1" %>
             <!--@dish.try(:venue_id)-->
             
             <button class="btn btn-primary btn-sm">

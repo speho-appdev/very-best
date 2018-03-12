@@ -33,11 +33,9 @@
           Venue
         </label>
 
-        <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @bookmark.venue_id), :class => "form-control") %>
+        <%= select_tag(:venue_id, options_from_collection_for_select(Venue.all, :id, :name, @bookmark.venue_id), prompt: "Choose a venue...", :class => "form-control") %>
       </div>
 
-      <!-- Label and input for user_id -->
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <!-- Label and input for notes -->
       <div class="form-group">
@@ -53,7 +51,7 @@
           User_id
         </label>
 
-        <input type="text" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>" >
+        <input type="hidden" id="user_id" name="user_id" class="form-control" value="<%= current_user.id %>" >
       </div>      
 
       <button class="btn btn-success">
