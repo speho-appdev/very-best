@@ -46,22 +46,19 @@
     </div>
     <ul class="list-group list-group-flush">
       
-      <% Bookmark.where(:user_id => current_user.id).each do |bookmark| %>
+      <% @venues.order(:name).uniq.each do |venue| %>
       
       <li class="list-group-item">
-        <a href="/venues/<%= bookmark.venue_id %>"> 
-        <% Venue.where(:id => bookmark.venue_id).each do |the_name| %>
-        <%= the_name.name %>
+        <a href="/venues/<%= venue.id %>"> 
+          <%=venue.name %>
         </a>
         
         <small class="text-muted float-right">
-          <% Neighborhood.where(:id => the_name.neighborhood_id).each do |place| %>
+          <% place = Neighborhood.find(venue.neighborhood_id) %>
            <%= place.name %>
            
         </small>
       </li>
-      <% end %>
-      <% end %>
       <% end %>
     </ul>
     
