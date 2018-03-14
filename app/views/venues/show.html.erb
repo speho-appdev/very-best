@@ -54,7 +54,6 @@
           <!-- Label and input for dish_id -->
           <div class="form-group">
             <label for="dish_id" class="control-label">
-              Dish
             </label>
         
             <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name), :class => "form-control") %>
