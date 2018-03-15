@@ -54,7 +54,6 @@
           <!-- Label and input for dish_id -->
           <div class="form-group">
             <label for="dish_id" class="control-label">
-              Dish
             </label>
         
             <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name), :class => "form-control") %>
@@ -85,10 +84,10 @@
         Popular dishes here
       </li>
       
-      <% @venue.bookmarks.each do |bookmark| %>  
+      <% @venue.specialties.order(:name).uniq.each do |specialty| %>  
         <li class="list-group-item">
-          <a href="/dishes/<%= bookmark.dish.id %>">
-            <%= bookmark.dish.name %>
+          <a href="/dishes/<%= specialty.id %>">
+            <%= specialty.name %>
           </a>
         </li>
           <% end %>

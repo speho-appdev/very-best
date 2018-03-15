@@ -55,7 +55,7 @@
         
         <small class="text-muted float-right">
           <% place = Neighborhood.find(venue.neighborhood_id) %>
-           <%= place.name %>
+           <%= place.name %>, <%=place.city %>
            
         </small>
       </li>
