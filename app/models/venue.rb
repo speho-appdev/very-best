@@ -25,6 +25,7 @@ class Venue < ApplicationRecord
 
   has_many   :bookmarks,
              :dependent => :destroy
+             
 
   # Indirect associations
 
